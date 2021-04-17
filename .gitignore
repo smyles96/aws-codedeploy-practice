@@ -1,0 +1,2 @@
+*.pem
+cloudformation-templates/parameters.json
