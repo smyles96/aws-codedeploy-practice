@@ -14,11 +14,13 @@ as guidance throughout the process, so all credit to him.
         ```
         aws ec2 create-key-pair --key-name CodeDeploy-EC2-Pair --query "KeyMaterial" --output text > CodeDeploy-EC2-Pair.pem
         ```
-3) Wrote a small variation of retrofuturejosh's Express-based Node app inside the src folder
-4) Copied retrofuturejosh's scripts folder to handle starting/stopping server
-    * Changed retrofuturejosh's create-stacks.sh to only create CodeDeploy resources (renamed to create-codedeploy-stack.sh)
-5) Copied retrofuturejosh's cloudformation-templates/code-deploy.yml file
-6) Added a parameters.json file to the cloudformation-templates directory with the following content:
+3) Generated a GitHub access token to allow CodeDeploy to monitor repo
+    * https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
+4) Wrote a small variation of retrofuturejosh's Express-based Node app inside the src folder
+5) Copied retrofuturejosh's scripts folder to handle starting/stopping server
+    * Changed retrofuturejosh's create-stacks.sh to only create CodePipeline + CodeDeploy resources
+6) Copied retrofuturejosh's cloudformation-templates/code-pipeline.yml and cloudformation-templates/code-deploy.yml files
+7) Added a parameters.json file to the cloudformation-templates directory with the following content:
     ```json
     [
         {
@@ -36,6 +38,10 @@ as guidance throughout the process, so all credit to him.
         {
             "ParameterKey": "GitHubBranch",
             "ParameterValue": <Name of the Branch>
+        },
+        {
+        "ParameterKey": "S3ArtifactStore",
+        "ParameterValue": "codepipeline-us-east-1-<Unique ID Here>"
         },
         {
             "ParameterKey": "EC2KeyName",

@@ -15,6 +15,9 @@ Parameters:
     Type: String
     Description: Name of branch to use inside the GitHub Repository
     Default: master
+  S3ArtifactStore:
+    Type: String
+    Description: S3 Bucket where artifacts will be stored
   EC2KeyName:
     Type: String
     Description: Existing KeyName for EC2 instance
