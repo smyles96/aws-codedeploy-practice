@@ -40,8 +40,8 @@ as guidance throughout the process, so all credit to him.
             "ParameterValue": <Name of the Branch>
         },
         {
-        "ParameterKey": "S3ArtifactStore",
-        "ParameterValue": "codepipeline-us-east-1-<Unique ID Here>"
+            "ParameterKey": "S3ArtifactStore",
+            "ParameterValue": "codepipeline-us-east-1-<Unique ID Here>"
         },
         {
             "ParameterKey": "EC2KeyName",
